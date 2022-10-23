@@ -1,0 +1,26 @@
+<launch>
+
+    <!-- Map server -->
+    <arg name="map" default="$(find my_path_planning)/map/labmap.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args=" $(arg map)" required="true" output="screen">
+
+    </node>
+
+    <!-- AMCL -->
+    <!-- arg name="scan_topic"     default="scan"/-->
+
+    <!--TODO-->
+    <arg name="initial_pose_x" default="0.0"/>
+    <arg name="initial_pose_y" default="0.0"/>
+
+    <node name="amcl" pkg="amcl" type="amcl">
+        <param name="initial_pose_x" value="$(arg initial_pose_x)"/>
+        <param name="initial_pose_y" value="$(arg initial_pose_y)"/>
+
+    </node>
+
+
+    <!-- Show in Rviz   -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find my_path_planning)/launch/pioneer3dx.rviz"/>
+
+</launch>
