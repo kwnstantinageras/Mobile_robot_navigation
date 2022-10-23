@@ -1,0 +1,18 @@
+<launch>
+	<!-- Map server -->
+  <!--arg name="map_file" default="$(find /home/konstantina/catkin_ws/src/pioneer_gazebo_ros/pioneer_gazebo/map)/small_world.yaml/-->
+  
+  
+
+  <!--node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /-->
+  
+  <arg name="map" default="$(find pioneer_gazebo)/map/small_world.yaml"/>
+  
+  <node name="map_server" pkg="map_server" type="map_server" args=" $(arg map)" required="true" output="screen">
+      <param name="frame_id" value="map" />
+  </node>
+  
+   
+  
+
+</launch>
